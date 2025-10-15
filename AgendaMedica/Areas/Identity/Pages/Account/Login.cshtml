@@ -1,0 +1,58 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Acesse sua conta";
+}
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light shadow">
+    <div class="card shadow-sm p-5 border-0 rounded-4" style="max-width: 400px; width: 100%;">
+        <div class="text-center mb-4">
+            <h4 class="fw-semibold">Acesse sua conta</h4>
+        </div>
+
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+            <div class="mb-3">
+                <label asp-for="Input.Email" class="form-label fw-medium">E-mail</label>
+                <input asp-for="Input.Email" class="form-control py-2" autocomplete="username" aria-required="true" placeholder="insira seu e-mail" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2 position-relative">
+                <div class="d-flex justify-content-between">
+                    <label asp-for="Input.Password" class="form-label fw-medium">Senha</label>
+                    
+                </div>
+                <input asp-for="Input.Password" class="form-control py-2" autocomplete="current-password" aria-required="true" placeholder="insira sua senha" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-check my-3">
+                <input class="form-check-input" asp-for="Input.RememberMe" />
+                <label class="form-check-label small" asp-for="Input.RememberMe">
+                    Permanecer conectado por uma semana
+                </label>
+            </div>
+
+            <div class="d-grid">
+                <button id="login-submit" type="submit" class="btn btn-primary btn-lg fw-semibold" style="background-color:#635bff; border:none;">
+                    Entrar
+                </button>
+            </div>
+
+            <hr class="my-4" />
+
+            <div class="text-center small">
+               <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none" style="color:#635bff;">Esqueceu a senha?</a> <br />
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none" style="color:#635bff;">Criar uma nova conta</a> <br />
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none" style="color:#635bff;">Reenviar email de configuração</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

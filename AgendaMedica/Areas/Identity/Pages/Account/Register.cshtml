@@ -1,0 +1,52 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Acesse sua conta";
+}
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light shadow">
+    <div class="card shadow-sm p-5 border-0 rounded-4" style="max-width: 400px; width: 100%;">
+        <div class="text-center mb-4">
+            <h4 class="fw-semibold">Cadastre-se</h4>
+        </div>
+
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+            <div class="mb-3">
+                <label asp-for="Input.Email" class="form-label fw-medium">E-mail</label>
+                <input asp-for="Input.Email" class="form-control py-2" autocomplete="username" aria-required="true" placeholder="insira seu e-mail" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2 position-relative">
+                <div class="d-flex justify-content-between">
+                    <label asp-for="Input.Password" class="form-label fw-medium">Senha</label>
+
+                </div>
+                <input asp-for="Input.Password" class="form-control py-2" autocomplete="current-password" aria-required="true" placeholder="insira sua senha" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Password" class="form-label fw-semibold">Confirmar Senha</label>
+                <input asp-for="Input.Password" class="form-control p-3" placeholder="********" type="password" autocomplete="current-password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="d-grid">
+                <button id="login-submit" type="submit" class="btn btn-primary btn-lg fw-semibold" style="background-color:#635bff; border:none;">
+                    Registrar
+                </button>
+            </div>
+
+            <hr class="my-4" />
+
+           
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
